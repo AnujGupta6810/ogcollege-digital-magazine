@@ -73,15 +73,15 @@ const BlogCard = ({
         </p>
 
         <div className="flex items-center justify-between pt-4 border-t border-border">
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">{author}</span>
-            <div className="flex items-center gap-1">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground overflow-hidden">
+            <span className="font-medium text-foreground truncate">{author.split(' ')[0]}</span>
+            <div className="flex items-center gap-1 flex-shrink-0">
               <Clock className="h-4 w-4" />
-              {readTime}
+              <span className="truncate">{readTime}</span>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 flex-shrink-0">
               <Eye className="h-4 w-4" />
-              {views}
+              <span className="truncate">{views}</span>
             </div>
           </div>
 
@@ -89,7 +89,7 @@ const BlogCard = ({
             variant="ghost"
             size="sm"
             onClick={handleLike}
-            className={`gap-1 ${isLiked ? 'text-primary' : ''}`}
+            className={`gap-1 flex-shrink-0 ${isLiked ? 'text-primary' : ''}`}
           >
             <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
             {likes}
