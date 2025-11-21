@@ -44,7 +44,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation onSearch={handleSearch} />
-      <Hero />
+      <Hero onSearch={handleSearch} />
       
       {searchQuery && <SearchResults results={searchResults} query={searchQuery} />}
       

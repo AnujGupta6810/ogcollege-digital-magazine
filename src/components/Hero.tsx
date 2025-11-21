@@ -1,10 +1,14 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
 
-const Hero = () => {
+interface HeroProps {
+  onSearch?: (query: string) => void;
+}
+
+const Hero = ({ onSearch }: HeroProps) => {
   const [articles, setArticles] = useState(0);
   const [readers, setReaders] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const animateValue = (start: number, end: number, duration: number, setValue: (value: number) => void) => {
@@ -41,14 +45,19 @@ const Hero = () => {
             Stories, perspectives, and conversations that matter. By students, for students.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button size="lg" className="text-lg px-8 group">
-              Explore Stories
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8">
-              Browse Categories
-            </Button>
+          <div className="max-w-2xl mx-auto pt-4">
+            <Input
+              type="search"
+              placeholder="Type your query"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && onSearch) {
+                  onSearch(searchQuery);
+                }
+              }}
+              className="h-14 text-lg px-6 bg-background/80 backdrop-blur-sm border-2 border-border hover:border-primary/50 focus-visible:border-primary transition-colors"
+            />
           </div>
 
           <div className="flex items-center justify-center gap-8 pt-8 text-sm text-muted-foreground">
