@@ -74,11 +74,7 @@ const BlogCard = ({
 
         <div className="flex items-center justify-between pt-4 border-t border-border">
           <div className="flex items-center gap-4 text-sm text-muted-foreground overflow-hidden">
-            <span className="font-medium text-foreground truncate">{author.split(' ')[0]}</span>
-            <div className="flex items-center gap-1 flex-shrink-0">
-              <Clock className="h-4 w-4" />
-              <span className="truncate">{readTime}</span>
-            </div>
+            <span className="font-medium text-foreground truncate">{author}</span>
             <div className="flex items-center gap-1 flex-shrink-0">
               <Eye className="h-4 w-4" />
               <span className="truncate">{views}</span>
