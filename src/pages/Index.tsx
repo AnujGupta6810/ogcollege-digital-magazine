@@ -27,15 +27,15 @@ const Index = () => {
         );
       });
 
-    // Always show exactly 10 cards
+    // Always show exactly 11 cards
     let results = [...filtered];
     
-    // If we have fewer than 10 matches, fill with other blogs
-    if (results.length < 10) {
+    // If we have fewer than 11 matches, fill with other blogs
+    if (results.length < 11) {
       const remaining = mockBlogs.filter(blog => !results.includes(blog));
-      results = [...results, ...remaining].slice(0, 10);
+      results = [...results, ...remaining].slice(0, 11);
     } else {
-      results = results.slice(0, 10);
+      results = results.slice(0, 11);
     }
 
     setSearchResults(results);
