@@ -25,10 +25,20 @@ const Index = () => {
           blog.category.toLowerCase().includes(searchLower) ||
           blog.author.toLowerCase().includes(searchLower)
         );
-      })
-      .slice(0, 10);
+      });
 
-    setSearchResults(filtered);
+    // Always show exactly 10 cards
+    let results = [...filtered];
+    
+    // If we have fewer than 10 matches, fill with other blogs
+    if (results.length < 10) {
+      const remaining = mockBlogs.filter(blog => !results.includes(blog));
+      results = [...results, ...remaining].slice(0, 10);
+    } else {
+      results = results.slice(0, 10);
+    }
+
+    setSearchResults(results);
   };
 
   return (
